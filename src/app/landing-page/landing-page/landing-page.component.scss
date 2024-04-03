@@ -1,0 +1,50 @@
+#puzzle-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 2px;
+    grid-template-areas: 
+    "cell1 . cell13 cell14 cell15 . cell27"
+    "cell2 . cell12 . cell16 . cell26"
+    "cell3 . cell11 . cell17 . cell25"
+    "cell4 . cell10 . cell18 . cell24"
+    "cell5 . cell9 . cell19 . cell23"
+    "cell6 cell7 cell8 . cell20 cell21 cell22";
+    padding: 50px;
+}
+
+#grid input {
+    width: 66px;
+    height: 60px;
+    background-color: white;
+}
+ 
+#grid div {
+    background-color: floralwhite;
+    font-weight: 700;
+}
+
+.cell {
+    border: solid 2px grey;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+}
+
+@for $i from 1 through 27 {
+    .cell:nth-child(#{$i}) {
+        grid-area: cell#{$i};
+    }
+}
+
