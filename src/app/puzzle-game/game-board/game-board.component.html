@@ -1,0 +1,39 @@
+<div id="board-page">
+    <form [formGroup]="combinationForm">
+        <div id="grid">
+            <input class="cell" type="number" min="1" max="9" formControlName="input1">
+            <div class="cell">+</div>
+            <div class="cell">13</div>
+            <div class="cell">x</div>
+            <input class="cell" type="number" min="1" max="9" formControlName="input2">
+            <div class="cell">:</div>
+            <input class="cell" type="number" min="1" max="9" formControlName="input3">
+            <div class="cell">+</div>
+            <input class="cell" type="number" min="1" max="9" formControlName="input4">
+            <div class="cell">+</div>
+            <div class="cell">12</div>
+            <div class="cell">x</div>
+            <input class="cell" type="number" min="1" max="9" formControlName="input5">
+            <div class="cell">-</div>
+            <input class="cell" type="number" min="1" max="9" formControlName="input6">
+            <div class="cell">-</div>
+            <div class="cell">11</div>
+            <div class="cell">+</div>
+            <input class="cell" type="number" min="1" max="9" formControlName="input7">
+            <div class="cell">x</div>
+            <input class="cell" type="number" min="1" max="9" formControlName="input8">
+            <div class="cell">:</div>
+            <input class="cell" type="number" min="1" max="9" formControlName="input9">
+            <div class="cell">-</div>
+            <div class="cell">10</div>
+            <div class="cell">=</div>
+            <div class="cell">66</div>
+        </div>
+    </form>
+    <div id="handle">
+        <button type="submit" [disabled]="combinationForm.invalid" (click)="testCombination()">Test</button>
+        <button type="submit"[disabled]="combinationForm.invalid" (click)="saveCombination()">Save</button>
+       <div *ngIf="errorMessage">{{errorMessage}}</div>
+    </div>
+</div>
+
