@@ -55,6 +55,10 @@ th, td {
     text-align: center;
 }
 
+tbody tr:hover {
+    background-color: #a7fbff79;
+}
+
 button {
     display: inline-block;
     background-color: #5B5BD6;

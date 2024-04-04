@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let combination of combinations$ | async">
+                    <tr *ngFor="let combination of combinations$ | async" (click)="selectCombination(combination)">
                         <td>{{ combination.id}}</td>
                         <td>{{ combination.value }}</td>
                         <td>{{ combination.valid ? 'Yes' : 'No' }}</td>

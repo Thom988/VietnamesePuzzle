@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Combination } from '../../core/models/combination.model';
 import { CombinationService } from '../../core/services/combination.service';
 import { NgIf } from '@angular/common';
+import { GameDataComponent } from '../game-data/game-data.component';
 
 @Component({
   selector: 'app-game-board',
@@ -41,7 +42,6 @@ export class GameBoardComponent {
     testCombination(): void {
       this.saveForm();
       if(this.isCombRespectUniqueness()) {
-        // A FAIRE : Tester la combinaison en  l'envoyant à l'API grâce au service
         this.userInfo = null;
         this.combinationService.getCombinationTest(this.combination.value).subscribe((test) => {
           if (test) {

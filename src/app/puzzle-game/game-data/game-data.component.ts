@@ -2,7 +2,7 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Combination } from '../../core/models/combination.model';
 import { CombinationService } from '../../core/services/combination.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
 
@@ -24,6 +24,10 @@ export class GameDataComponent {
 
   ngOnInit() {
 
+  }
+
+  selectCombination(combination: Combination) {
+    // A FAIRE : selectionner la combinaison et l'envoyer à GameBoardComponent pour l'afficher.
   }
 
   generateCombinations() {
