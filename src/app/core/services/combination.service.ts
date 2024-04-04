@@ -18,26 +18,26 @@ export class CombinationService {
     return this.http.get<Combination[]>("http://localhost:9000/combinations");
   }
 
-  deleteCombinations(): void {
-    this.http.delete("http://localhost:9000/combinations");
+  deleteCombinations(): Observable<void>  {
+    return this.http.delete<void>("http://localhost:9000/combinations");
   }
-
-  // deleteCombinations(): void {
-  //   this.http.delete("http://localhost:9000/combinations")
-  //     .subscribe(
-  //       () => {
-  //         console.log("La suppression s'est bien déroulée !");
-  //         // Tu peux ajouter d'autres actions ici si nécessaire
-  //       },
-  //       (error) => {
-  //         console.error("Erreur lors de la suppression :", error);
-  //         // Gère l'erreur ici (par exemple, affiche un message d'erreur à l'utilisateur)
-  //       }
-  //     );
 
   getCombinationById(combinationId: number): Observable<Combination> {
     return this.http.get<Combination>(`http://localhost:9000/combination/${combinationId}`);
   }
+
+  getCombinationsContaining(combValue: string): Observable<Combination[]> {
+    return this.http.get<Combination[]>(`http://localhost:9000/combinations/contain/${combValue}`);
+  }
+
+  getCombinationTest(combValue: string): Observable<boolean> {
+    return this.http.get<boolean>(`http://localhost:9000/combination/test/${combValue}`);
+  }
+
+  saveCombination(combination: Combination): Observable<Combination> {
+    return this.http.post<Combination>("http://localhost:9000/combination",combination);
+  }
+
 
 }
 

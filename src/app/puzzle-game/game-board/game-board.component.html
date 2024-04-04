@@ -33,7 +33,7 @@
     <div id="handle">
         <button type="submit" [disabled]="combinationForm.invalid" (click)="testCombination()">Test</button>
         <button type="submit"[disabled]="combinationForm.invalid" (click)="saveCombination()">Save</button>
-       <div *ngIf="errorMessage">{{errorMessage}}</div>
     </div>
+    <div id="user-info" *ngIf="userInfo">{{userInfo}}</div>
 </div>
 

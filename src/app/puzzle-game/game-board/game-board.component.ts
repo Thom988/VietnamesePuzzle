@@ -16,7 +16,7 @@ export class GameBoardComponent {
   combinationForm!: FormGroup;
   combination!: Combination;
   combinationPattern: string = "^(?=.*1)(?=.*2)(?=.*3)(?=.*4)(?=.*5)(?=.*6)(?=.*7)(?=.*8)(?=.*9)[1-9]{9}$";
-  errorMessage!: string | null;
+  userInfo!: string | null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,23 +42,36 @@ export class GameBoardComponent {
       this.saveForm();
       if(this.isCombRespectUniqueness()) {
         // A FAIRE : Tester la combinaison en  l'envoyant à l'API grâce au service
-        this.errorMessage = null;
-        console.log(this.combination);
+        this.userInfo = null;
+        this.combinationService.getCombinationTest(this.combination.value).subscribe((test) => {
+          if (test) {
+            this.userInfo = "This combination is correct";
+          } else {
+            this.userInfo = "This combination is not correct";
+          }
+        },
+        (error) => {
+          this.userInfo = "Combination test error";
+          console.error("Combination test error",error);
+        }
+        )
       } else {
-        // A FAIRE : Message de test impossible en raison du non respect de l'unicité
-        this.errorMessage = "Impossible to test this combination, it doesn't respect the uniqueness principle !";
+        this.userInfo = "Impossible to test this combination, it doesn't respect the uniqueness principle !";
       }
     }
 
     saveCombination(): void {
       this.saveForm();
       if (this.isCombRespectUniqueness()) {
-        // A FAIRE : sauvegarder la combinaison grâce au service vers l'API 
-        console.log(this.combination);
-        this.errorMessage = null;
+        this.userInfo = null;
+        this.combinationService.saveCombination(this.combination).subscribe((newCombination) => {
+          this.userInfo = "A new combination has been saved :" + " " + newCombination.value;
+        }, (error) => {
+          console.error("Impossible to save this combination : ", error);
+          this.userInfo = "Impossible to save this combination";
+        });
       } else {
-        // A FAIRE : Message de sauvegarde impossible en raison du non respect de l'unicité
-        this.errorMessage = "Impossible to save this combination, it doesn't respect the uniqueness principle !";
+        this.userInfo = "Impossible to save this combination, it doesn't respect the uniqueness principle !";
       }
     }
 

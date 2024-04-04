@@ -1,23 +1,22 @@
 <div id="data-page">
     <h1>Combinations</h1>
-    <div id="button-controls">
-        <h2>Command</h2>
-        <div id="command-bar">
-            <button (click)="generateCombinations()">Generate All</button>
-            <div *ngIf="executionTime$">Execution Time (ms) : {{executionTime$}}</div>
+    <div id="combinations-window">
+        <div id="button-controls">
+            <div id="command-bar">
+                <button (click)="generateCombinations()">Generate Solutions</button>
+                <div *ngIf="executionTime">Execution Time : {{executionTime}} ms</div>
+            </div>
+            <button (click)="getCombinations()">Display Combinations</button>
+            <button (click)="deleteCombinations()">Delete Combinations</button>
+            <h3>Search Combination :</h3>
+            <div id="search-bar">
+                <label for="value">Value</label>
+                <input id="value" type="text" placeholder="example: 123456..." [(ngModel)]="combValue">
+                <button (click)="getCombinationsContaining(combValue)">Filter</button>
+            </div>
         </div>
-        <div>
-            <button>Delete All</button>
-        </div>
-        <h2>Search</h2>
-        <div id="search-bar">
-            <label for="value">Value</label>
-            <input type="text" placeholder="example: 123456...">
-            <button>Filter</button>
-        </div>
-        <h2>List</h2>
         <div id="combinations-list">
-            <table>
+            <table id="table">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -27,11 +26,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let combination of combinations$ | async">
-                        <td>{{ combination.id }}</td>
+                        <td>{{ combination.id}}</td>
                         <td>{{ combination.value }}</td>
                         <td>{{ combination.valid ? 'Yes' : 'No' }}</td>
                     </tr> 
-                       
                 </tbody>
             </table>
         </div>
