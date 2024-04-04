@@ -3,3 +3,14 @@
     height: 400px;
     background-color: aquamarine;
 }
+
+#command-bar{
+    display: flex;
+    flex-direction: row;
+}
+
+#combinations-list{
+    height: 200px;
+    overflow-y: auto;
+    background-color: beige;
+}

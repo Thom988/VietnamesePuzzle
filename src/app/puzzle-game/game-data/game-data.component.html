@@ -1,2 +1,39 @@
 <div id="data-page">
+    <h1>Combinations</h1>
+    <div id="button-controls">
+        <h2>Command</h2>
+        <div id="command-bar">
+            <button (click)="generateCombinations()">Generate All</button>
+            <div *ngIf="executionTime$">Execution Time (ms) : {{executionTime$}}</div>
+        </div>
+        <div>
+            <button>Delete All</button>
+        </div>
+        <h2>Search</h2>
+        <div id="search-bar">
+            <label for="value">Value</label>
+            <input type="text" placeholder="example: 123456...">
+            <button>Filter</button>
+        </div>
+        <h2>List</h2>
+        <div id="combinations-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Value</th>
+                        <th>Valid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let combination of combinations$ | async">
+                        <td>{{ combination.id }}</td>
+                        <td>{{ combination.value }}</td>
+                        <td>{{ combination.valid ? 'Yes' : 'No' }}</td>
+                    </tr> 
+                       
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
