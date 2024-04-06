@@ -26,8 +26,8 @@ export class GameDataComponent {
 
   }
 
-  selectCombination(combination: Combination) {
-    // A FAIRE : selectionner la combinaison et l'envoyer à GameBoardComponent pour l'afficher.
+  selectCombination(selectedCombination: Combination) {
+    this.combinationService.setSharedCombination(selectedCombination);
   }
 
   generateCombinations() {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Combination } from '../models/combination.model';
 
 @Injectable({
@@ -8,7 +8,17 @@ import { Combination } from '../models/combination.model';
 })
 export class CombinationService {
 
+  private selectedCombination = new BehaviorSubject<any>(null);
+
   constructor(private http: HttpClient) { }
+
+  setSharedCombination(combination: Combination) {
+    this.selectedCombination.next(combination);
+  }
+
+  getSharedCombination(): Observable<Combination> {
+    return this.selectedCombination.asObservable();
+  }
 
   generateCombinations(): Observable<number> {
     return this.http.get<number>("http://localhost:9000/combinations/generate");

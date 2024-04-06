@@ -21,7 +21,7 @@ export class GameBoardComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private combinationService: CombinationService
+    private combinationService: CombinationService,
     ) {}
 
     ngOnInit() {
@@ -36,6 +36,15 @@ export class GameBoardComponent {
         input7: [null, Validators.required],
         input8: [null, Validators.required],
         input9: [null, Validators.required]
+      })
+
+      this.combinationService.getSharedCombination().subscribe((combination) => {
+        if (combination != null ) {
+          let i: number = 0;
+          for (i=1; i<10; i++) {
+            this.combinationForm.get(`input${i}`)?.setValue(combination.value[i-1]);
+          }
+        }
       })
     }
 
