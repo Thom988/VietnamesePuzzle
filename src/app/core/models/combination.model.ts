@@ -1,7 +1,7 @@
 // src/app/combination.model.ts
 
 export class Combination {
-    id!: number;
+    id!: number | null;
     value: string;
     valid!: boolean;
   

@@ -48,6 +48,9 @@ export class CombinationService {
     return this.http.post<Combination>("http://localhost:9000/combination",combination);
   }
 
+  updateCombination(combination: Combination): Observable<Combination> {
+    return this.http.put<Combination>("http://localhost:9000/combination",combination);
+  }
 
 }
 
