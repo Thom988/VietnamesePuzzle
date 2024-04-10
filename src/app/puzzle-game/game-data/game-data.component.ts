@@ -23,7 +23,9 @@ export class GameDataComponent {
   constructor(private combinationService: CombinationService) {}
 
   ngOnInit() {
-
+    this.combinationService.getCombinationsUpdated().subscribe(() => {
+      this.getCombinations();
+  });
   }
 
   selectCombination(selectedCombination: Combination) {

@@ -78,6 +78,7 @@ export class GameBoardComponent {
             this.userInfo = "A new combination has been saved :" + " " + newCombination.value;
             this.combination = null;
             this.combinationForm.reset();
+            this.combinationService.notifyCombinationUpdated();
           }, (error) => {
             console.error("Impossible to save this combination : ", error);
             this.userInfo = "Impossible to save this combination";
@@ -96,6 +97,7 @@ export class GameBoardComponent {
             this.userInfo = "Combination " + updatedCombination.id + " has been updated : " + updatedCombination.value;
             this.combination = null;
             this.combinationForm.reset();
+            this.combinationService.notifyCombinationUpdated();
             },
             (error) => {
               this.userInfo = "Impossible to update this combination";
