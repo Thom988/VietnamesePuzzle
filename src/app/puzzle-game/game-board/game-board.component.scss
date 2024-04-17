@@ -14,14 +14,24 @@
 
 }
 
+#grid input, #grid div {
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
 #grid input {
+    padding-left: 8px;
     width: 66px;
     height: 60px;
-    background-color: white;
+    background-color: white;   
+}
+
+#grid input:hover {
+  background-color: #a6ff003c;
 }
  
 #grid div {
-    background-color: #a7fbff38;
+    background-color: #96e4f4d7;
     font-weight: 400;
 }
 
@@ -47,31 +57,37 @@
     justify-content: center;
 }
 
-#handle button{
-    background-color: #5B5BD6;
-    border-radius: 10px;
-    border: 4px double #cccccc;
-    color: #eeeeee;
+#handle button {
+    margin: 0 5px 5px 5px;
+    color: #c4f5e1;
+    border-radius: 5px;
+    border: none;
+    align-items: center;
+    max-width: 100px;
+    background-color: #00677c;
+    padding: 5px 10px;
     text-align: center;
-    width: 100px;
-    height: 50px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
+    transition: all 0.3s;
+    font-family: "Seymour One", sans-serif;
 }
 
 #handle button:hover {
-    background-color: #D6409F;
+    background-color: #afd668;
+    color: #00677c;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #handle button:disabled {
   color: rgba(0, 0, 0, 0.5);
   background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid grey;
 }
 
 #user-info {
     font-size: 17px;
     font-weight: 600;
     text-align: center;
+    margin-top: 17px;
+    color: #3B9EFF;
 }
 

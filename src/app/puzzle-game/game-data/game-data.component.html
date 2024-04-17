@@ -3,14 +3,14 @@
     <div id="combinations-window">
         <div id="button-controls">
             <div id="command-bar">
-                <button (click)="generateCombinations()">Generate Solutions</button>
+                <button (click)="generateCombinations()">Generate</button>
                 <div *ngIf="executionTime">Execution Time : {{executionTime}} ms</div>
             </div>
-            <button (click)="getCombinations()">Display Combinations</button>
-            <button (click)="deleteCombinations()">Delete Combinations</button>
-            <h3>Search Combination :</h3>
+            <button (click)="getCombinations()">Display</button>
+            <button (click)="deleteCombinations()">Delete</button>
+            <h3>Search Combinations</h3>
             <div id="search-bar">
-                <label for="value">Value</label>
+                <!-- <label for="value">Value</label> -->
                 <input id="value" type="text" placeholder="example: 123456..." [(ngModel)]="combValue">
                 <button (click)="getCombinationsContaining(combValue)">Filter</button>
             </div>

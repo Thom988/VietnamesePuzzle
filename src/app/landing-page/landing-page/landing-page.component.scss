@@ -1,5 +1,18 @@
 #game-page {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
 }
 
+@media (max-width: 760px) {
+    #game-page {
+        flex-direction: column;
+    }
+    #game-page > :first-child {
+        margin-bottom: 20px;
+    }
+}
